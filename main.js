@@ -30,7 +30,12 @@ const positionFunction = (x, y) => {
       }
   } 
 
-
+const endGame = (x, y) => {
+    if (x === -5 && y === 5) {
+        console.log ('game.over')
+        return rl.close()
+    } 
+}
 
 
 var recursiveAsyncReadLine = function () {
@@ -38,20 +43,24 @@ var recursiveAsyncReadLine = function () {
     if (answer == 'exit') //we need some base case, for recursion
       return rl.close(); //closing RL and returning from function.
 
+      
 
     if (answer === 'up') {
         y = y +1;
         positionFunction(x , y)
+        endGame(x, y)
   } else if (answer === 'down') {
     y = y -1;
     positionFunction(x , y)
-
+    endGame(x, y)
   } else if (answer === 'right') {
       x = x +1;
       positionFunction(x , y)
+      endGame(x, y)
   } else if (answer === 'left') {
       x = x - 1;
       positionFunction(x , y)
+      endGame(x, y)
   }
     recursiveAsyncReadLine(); //Calling this function again to ask new question
   });
